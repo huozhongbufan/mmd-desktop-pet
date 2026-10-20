@@ -1,0 +1,8 @@
+# model & textures are NOT redistributed
+assets/*.pmx
+assets/**/*.bmp
+assets/**/*.png
+!assets/README.md
+out/
+__pycache__/
+*.pyc
