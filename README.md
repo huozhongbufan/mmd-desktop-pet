@@ -1,5 +1,38 @@
 # mmd-desktop-pet
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-3776ab.svg)](https://www.python.org/)
+[![PySide6](https://img.shields.io/badge/PySide6-6.5%2B-41cd52.svg)](https://pypi.org/project/PySide6/)
+[![Platform](https://img.shields.io/badge/platform-Windows-blue.svg)]()
+[![No model included](https://img.shields.io/badge/models-not%20included-orange.svg)](assets/README.md)
+
+把 MMD / PMX 3D 模型渲染成 Windows 桌面宠物：无边框、逐像素透明、置顶、可拖动。
+
+> Render an **MMD / PMX** model as a Windows desktop pet — frameless,
+> per-pixel translucent, always-on-top, draggable. Pure Python (PySide6 + OpenGL).
+>
+> Ships with a **zero-dependency PMX 2.0 parser** that also handles a real-world
+> **non-standard exporter** (17-byte header, +4 pad after every weight block,
+> 1-byte bone flags), and a working **CPU-compositing workaround** for the fact
+> that `QOpenGLWidget` on Windows does not composite into a translucent window.
+>
+> [`docs/PITFALLS.md`](docs/PITFALLS.md) documents 11 traps that each cost hours:
+> the 17-byte header, `QMatrix4x4` row-major order, `glDrawElements` throwing
+> `INVALID_OPERATION`, attributes silently optimized away, `QImage.mirrored()`
+> defaulting to *horizontal*, DPI virtualization making screenshots lie, and more.
+>
+> ```bash
+> pip install PySide6 numpy
+> set PET_MODEL=D:\models\your.pmx
+> python pet.py
+> python preview.py 0        # offscreen render to PNG
+> ```
+>
+> **Models are not included** — MMD models almost always forbid redistribution.
+> See [`assets/README.md`](assets/README.md).
+
+---
+
 把一个 **MMD / PMX 3D 模型**渲染成 Windows 桌面宠物：无边框、逐像素透明、置顶、
 轻微摆身、可拖动。纯 Python（PySide6 + OpenGL），不依赖 MMD 本体。
 
